@@ -1,2 +1,4 @@
 leevin-osake
-============
+============ 
+Osake graafi
+
