@@ -63,7 +63,7 @@ $dbname = "osake";
     // Default values
     if(empty($company)) {  $company = "Kone"; } else { $company = $_GET["company"]; }
 
-    $sql = "SELECT date, lowest, highest, final FROM rate WHERE company = '".$company."' AND date > '2014-10-01'";
+    $sql = "SELECT date, lowest, highest, final FROM rate WHERE company = '".$company."' AND date > '1995-10-01'";
 
     $result = $conn->query($sql);
     $looper = array();
@@ -71,6 +71,10 @@ $dbname = "osake";
     if ($result->num_rows > 0) {
 	// output data of each row
 	while($row = $result->fetch_assoc()) {
+	//var_dump(date('d', strtotime($row['date'])));
+	if (date('d', strtotime($row['date'])) !== "01") {
+	continue;
+	}
 	    $looper[] = array(
 	      // "company" => utf8_encode($row["company"]),
 	      "date" => $row["date"],
